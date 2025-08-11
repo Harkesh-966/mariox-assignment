@@ -19,6 +19,8 @@ import { UpdateIngestionStatusUseCase } from '@/application/ingestion/use-cases/
 import { GetIngestionUseCase } from '@/application/ingestion/use-cases/get-ingestion.usecase';
 import { ListIngestionsUseCase } from '@/application/ingestion/use-cases/list-ingestions.usecase';
 import { InfrastructureModule } from '@/infrastructure/infrastructure.module';
+import { UploadAndIngestUseCase } from '@/application/documents/use-cases/upload-and-ingest.usecase';
+
 
 @Module({
 	imports: [
@@ -34,7 +36,7 @@ import { InfrastructureModule } from '@/infrastructure/infrastructure.module';
 		RegisterUserUseCase, LoginUserUseCase,
 		AssignRoleUseCase, ListUsersUseCase,
 		CreateDocumentUseCase, UpdateDocumentUseCase, DeleteDocumentUseCase, ListDocsByOwnerUseCase,
-		TriggerIngestionUseCase, UpdateIngestionStatusUseCase, GetIngestionUseCase, ListIngestionsUseCase,
+		TriggerIngestionUseCase, UpdateIngestionStatusUseCase, GetIngestionUseCase, ListIngestionsUseCase, UploadAndIngestUseCase
 	],
 	exports: [],
 })

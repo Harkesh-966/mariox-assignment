@@ -7,8 +7,10 @@ export class PrismaDocumentRepository implements IDocumentRepository {
 	constructor(private readonly prisma: PrismaService) { }
 
 	async create(data: any) {
-		const { ownerId, title, description, url } = data;
-		return this.prisma.document.create({ data: { ownerId, title, description, url } });
+		const { ownerId, title, description, url, storagePath, originalName, mimeType, size } = data;
+		return this.prisma.document.create({
+			data: { ownerId, title, description, url, storagePath, originalName, mimeType, size },
+		});
 	}
 
 	async update(id: string, data: any) {

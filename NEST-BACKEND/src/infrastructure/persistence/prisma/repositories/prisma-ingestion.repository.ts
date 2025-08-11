@@ -24,6 +24,8 @@ export class PrismaIngestionRepository implements IIngestionRepository {
 				status: (job.status ?? 'queued') as string,
 				progress: job.progress ?? 0,
 				metadata: job.metadata ?? {},
+				paused: (job as any).paused ?? false,            // <— add
+				triggeredById: (job as any).triggeredById ?? null // <— add
 			},
 		});
 		return toDomain(created);
@@ -36,6 +38,7 @@ export class PrismaIngestionRepository implements IIngestionRepository {
 				status: data.status as string | undefined,
 				progress: data.progress,
 				metadata: data.metadata as any,
+				 paused: (data as any).paused as boolean | undefined, // <— add
 			},
 		});
 		return toDomain(updated);
