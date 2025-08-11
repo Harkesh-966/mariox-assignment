@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "linux-musl"]
 }
 
@@ -17,7 +17,10 @@ model User {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
-  documents    Document[]
+  documents Document[]
+
+  // NEW: back-relation for jobs triggered by this user (optional)
+  ingestionJobs IngestionJob[]
 }
 
 model Document {
@@ -30,15 +33,39 @@ model Document {
   updatedAt   DateTime @updatedAt
 
   owner User @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  // NEW: optional file metadata (non-breaking)
+  storagePath  String?
+  originalName String?
+  mimeType     String?
+  size         Int?
+
+  // NEW: back-relation to ingestion jobs
+  ingestionJobs IngestionJob[]
+
+  @@index([ownerId])
 }
 
 model IngestionJob {
-  id         String   @id @default(uuid())
+  id         String @id @default(uuid())
   documentId String
-  status     String   // 'queued' | 'running' | 'completed' | 'failed'
-  progress   Int      @default(0)
+  status     String // keep existing string: 'queued' | 'running' | 'completed' | 'failed'
+  progress   Int    @default(0)
   metadata   Json?
 
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // NEW: proper relation to Document (documentId already exists)
+  document Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  // NEW: who triggered (optional)
+  triggeredById String?
+  triggeredBy   User?   @relation(fields: [triggeredById], references: [id])
+
+  // NEW: pause flag (optional, non-breaking)
+  paused Boolean @default(false)
+
+  @@index([documentId])
+  @@index([triggeredById])
 }

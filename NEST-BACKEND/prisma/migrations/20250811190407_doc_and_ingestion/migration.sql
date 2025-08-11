@@ -20,6 +20,10 @@ CREATE TABLE "Document" (
     "url" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
+    "storagePath" TEXT,
+    "originalName" TEXT,
+    "mimeType" TEXT,
+    "size" INTEGER,
 
     CONSTRAINT "Document_pkey" PRIMARY KEY ("id")
 );
@@ -33,6 +37,8 @@ CREATE TABLE "IngestionJob" (
     "metadata" JSONB,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
+    "triggeredById" TEXT,
+    "paused" BOOLEAN NOT NULL DEFAULT false,
 
     CONSTRAINT "IngestionJob_pkey" PRIMARY KEY ("id")
 );
@@ -40,5 +46,20 @@ CREATE TABLE "IngestionJob" (
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
+-- CreateIndex
+CREATE INDEX "Document_ownerId_idx" ON "Document"("ownerId");
+
+-- CreateIndex
+CREATE INDEX "IngestionJob_documentId_idx" ON "IngestionJob"("documentId");
+
+-- CreateIndex
+CREATE INDEX "IngestionJob_triggeredById_idx" ON "IngestionJob"("triggeredById");
+
 -- AddForeignKey
 ALTER TABLE "Document" ADD CONSTRAINT "Document_ownerId_fkey" FOREIGN KEY ("ownerId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "IngestionJob" ADD CONSTRAINT "IngestionJob_documentId_fkey" FOREIGN KEY ("documentId") REFERENCES "Document"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "IngestionJob" ADD CONSTRAINT "IngestionJob_triggeredById_fkey" FOREIGN KEY ("triggeredById") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
