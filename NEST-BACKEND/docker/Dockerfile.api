@@ -1,7 +1,7 @@
 FROM node:20-alpine AS base
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci
+RUN npm ci --legacy-peer-deps
 COPY . .
 RUN npm run build
 
@@ -9,8 +9,8 @@ FROM node:20-alpine
 WORKDIR /app
 ENV NODE_ENV=production
 COPY --from=base /app/package*.json ./
-RUN npm ci --omit=dev
+RUN npm ci --legacy-peer-deps --omit=dev
 COPY --from=base /app/dist ./dist
-COPY --from=base /app/.env.example ./.env
+COPY --from=base /app/.env ./.env
 EXPOSE 3000
 CMD ["node", "dist/main.js"]
