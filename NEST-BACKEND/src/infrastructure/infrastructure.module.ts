@@ -8,12 +8,12 @@ import { PrismaDocumentRepository } from './persistence/prisma/repositories/pris
 import { PrismaIngestionRepository } from './persistence/prisma/repositories/prisma-ingestion.repository';
 
 @Module({
-  imports: [PrismaModule],
-  providers: [
-    { provide: USER_REPOSITORY, useClass: PrismaUserRepository },
-    { provide: DOCUMENT_REPOSITORY, useClass: PrismaDocumentRepository },
-    { provide: INGESTION_REPOSITORY, useClass: PrismaIngestionRepository },
-  ],
-  exports: [USER_REPOSITORY, DOCUMENT_REPOSITORY, INGESTION_REPOSITORY],
+	imports: [PrismaModule],
+	providers: [
+		{ provide: USER_REPOSITORY, useClass: PrismaUserRepository },
+		{ provide: DOCUMENT_REPOSITORY, useClass: PrismaDocumentRepository },
+		{ provide: INGESTION_REPOSITORY, useClass: PrismaIngestionRepository },
+	],
+	exports: [USER_REPOSITORY, DOCUMENT_REPOSITORY, INGESTION_REPOSITORY],
 })
-export class InfrastructureModule {}
+export class InfrastructureModule { }

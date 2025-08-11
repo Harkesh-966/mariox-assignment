@@ -3,6 +3,6 @@ import { DOCUMENT_REPOSITORY, IDocumentRepository } from '@/domain/documents/rep
 
 @Injectable()
 export class ListDocsByOwnerUseCase {
-  constructor(@Inject(DOCUMENT_REPOSITORY) private readonly repo: IDocumentRepository) {}
-  async execute(ownerId: string) { return this.repo.listByOwner(ownerId); }
+	constructor(@Inject(DOCUMENT_REPOSITORY) private readonly repo: IDocumentRepository) { }
+	async execute(ownerId: string) { return this.repo.listByOwner(ownerId); }
 }

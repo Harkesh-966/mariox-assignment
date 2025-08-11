@@ -3,9 +3,9 @@ import { DOCUMENT_REPOSITORY, IDocumentRepository } from '@/domain/documents/rep
 
 @Injectable()
 export class DeleteDocumentUseCase {
-  constructor(@Inject(DOCUMENT_REPOSITORY) private readonly repo: IDocumentRepository) {}
-  async execute(id: string) {
-    await this.repo.delete(id);
-    return { deleted: true };
-  }
+	constructor(@Inject(DOCUMENT_REPOSITORY) private readonly repo: IDocumentRepository) { }
+	async execute(id: string) {
+		await this.repo.delete(id);
+		return { deleted: true };
+	}
 }

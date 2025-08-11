@@ -9,16 +9,16 @@ import { AssignRoleDto } from './dtos/assign-role.dto';
 @Controller({ path: 'users', version: '1' })
 @UseGuards(JwtAuthGuard, RolesGuard)
 export class UsersController {
-  constructor(
-    private readonly assignRole: AssignRoleUseCase,
-    private readonly listUsers: ListUsersUseCase,
-  ) {}
+	constructor(
+		private readonly assignRole: AssignRoleUseCase,
+		private readonly listUsers: ListUsersUseCase,
+	) { }
 
-  @Get()
-  @Roles('admin')
-  async list() { return this.listUsers.execute(); }
+	@Get()
+	@Roles('admin')
+	async list() { return this.listUsers.execute(); }
 
-  @Post('assign-role')
-  @Roles('admin')
-  async assign(@Body() dto: AssignRoleDto) { return this.assignRole.execute(dto); }
+	@Post('assign-role')
+	@Roles('admin')
+	async assign(@Body() dto: AssignRoleDto) { return this.assignRole.execute(dto); }
 }

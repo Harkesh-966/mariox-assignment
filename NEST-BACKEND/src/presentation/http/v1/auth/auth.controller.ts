@@ -6,25 +6,25 @@ import { LoginUserUseCase } from '@/application/auth/use-cases/login-user.usecas
 
 @Controller({ path: 'auth', version: '1' })
 export class AuthController {
-  constructor(
-    private readonly registerUser: RegisterUserUseCase,
-    private readonly loginUser: LoginUserUseCase,
-  ) {}
+	constructor(
+		private readonly registerUser: RegisterUserUseCase,
+		private readonly loginUser: LoginUserUseCase,
+	) { }
 
-  @Post('register')
-  async register(@Body() dto: RegisterDto) {
-    return this.registerUser.execute(dto);
-  }
+	@Post('register')
+	async register(@Body() dto: RegisterDto) {
+		return this.registerUser.execute(dto);
+	}
 
-  @Post('login')
-  @HttpCode(HttpStatus.OK)
-  async login(@Body() dto: LoginDto) {
-    return this.loginUser.execute(dto);
-  }
+	@Post('login')
+	@HttpCode(HttpStatus.OK)
+	async login(@Body() dto: LoginDto) {
+		return this.loginUser.execute(dto);
+	}
 
-  @Post('logout')
-  @HttpCode(HttpStatus.NO_CONTENT)
-  async logout() {
-    return;
-  }
+	@Post('logout')
+	@HttpCode(HttpStatus.NO_CONTENT)
+	async logout() {
+		return;
+	}
 }

@@ -3,6 +3,6 @@ import { INGESTION_REPOSITORY, IIngestionRepository } from '@/domain/ingestion/r
 
 @Injectable()
 export class ListIngestionsUseCase {
-  constructor(@Inject(INGESTION_REPOSITORY) private readonly repo: IIngestionRepository) {}
-  async execute() { return this.repo.list(); }
+	constructor(@Inject(INGESTION_REPOSITORY) private readonly repo: IIngestionRepository) { }
+	async execute() { return this.repo.list(); }
 }

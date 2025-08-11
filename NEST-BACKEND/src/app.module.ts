@@ -4,6 +4,6 @@ import { InfrastructureModule } from './infrastructure/infrastructure.module';
 import { HttpModuleV1 } from './presentation/http/http.module';
 
 @Module({
-  imports: [ConfigurationModule, InfrastructureModule, HttpModuleV1],
+	imports: [ConfigurationModule, InfrastructureModule, HttpModuleV1],
 })
-export class AppModule {}
+export class AppModule { }

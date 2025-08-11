@@ -10,28 +10,28 @@ import { UpdateDocumentDto } from './dtos/update-doc.dto';
 @Controller({ path: 'documents', version: '1' })
 @UseGuards(JwtAuthGuard)
 export class DocumentsController {
-  constructor(
-    private readonly createDoc: CreateDocumentUseCase,
-    private readonly updateDoc: UpdateDocumentUseCase,
-    private readonly deleteDoc: DeleteDocumentUseCase,
-    private readonly listByOwner: ListDocsByOwnerUseCase,
-  ) {}
+	constructor(
+		private readonly createDoc: CreateDocumentUseCase,
+		private readonly updateDoc: UpdateDocumentUseCase,
+		private readonly deleteDoc: DeleteDocumentUseCase,
+		private readonly listByOwner: ListDocsByOwnerUseCase,
+	) { }
 
-  @Get()
-  async myDocs(@Req() req: any) { return this.listByOwner.execute(req.user.userId); }
+	@Get()
+	async myDocs(@Req() req: any) { return this.listByOwner.execute(req.user.userId); }
 
-  @Post()
-  async create(@Req() req: any, @Body() dto: CreateDocumentDto) {
-    return this.createDoc.execute({ ownerId: req.user.userId, ...dto });
-  }
+	@Post()
+	async create(@Req() req: any, @Body() dto: CreateDocumentDto) {
+		return this.createDoc.execute({ ownerId: req.user.userId, ...dto });
+	}
 
-  @Patch(':id')
-  async update(@Param('id') id: string, @Body() dto: UpdateDocumentDto) {
-    return this.updateDoc.execute(id, dto);
-  }
+	@Patch(':id')
+	async update(@Param('id') id: string, @Body() dto: UpdateDocumentDto) {
+		return this.updateDoc.execute(id, dto);
+	}
 
-  @Delete(':id')
-  async remove(@Param('id') id: string) {
-    return this.deleteDoc.execute(id);
-  }
+	@Delete(':id')
+	async remove(@Param('id') id: string) {
+		return this.deleteDoc.execute(id);
+	}
 }

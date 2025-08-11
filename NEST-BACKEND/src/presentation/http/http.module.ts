@@ -21,21 +21,21 @@ import { ListIngestionsUseCase } from '@/application/ingestion/use-cases/list-in
 import { InfrastructureModule } from '@/infrastructure/infrastructure.module';
 
 @Module({
-  imports: [
-    InfrastructureModule, // <-- bring in DI tokens (USER_REPOSITORY, DOCUMENT_REPOSITORY, INGESTION_REPOSITORY)
-    JwtModule.register({
-      secret: process.env.JWT_SECRET || 'change-me',
-      signOptions: { expiresIn: '1h' },
-    }),
-  ],
-  controllers: [AuthController, UsersController, DocumentsController, IngestionController],
-  providers: [
-    TokenService, JwtStrategy,
-    RegisterUserUseCase, LoginUserUseCase,
-    AssignRoleUseCase, ListUsersUseCase,
-    CreateDocumentUseCase, UpdateDocumentUseCase, DeleteDocumentUseCase, ListDocsByOwnerUseCase,
-    TriggerIngestionUseCase, UpdateIngestionStatusUseCase, GetIngestionUseCase, ListIngestionsUseCase,
-  ],
-  exports: [],
+	imports: [
+		InfrastructureModule,
+		JwtModule.register({
+			secret: process.env.JWT_SECRET || 'change-me',
+			signOptions: { expiresIn: '30d' },
+		}),
+	],
+	controllers: [AuthController, UsersController, DocumentsController, IngestionController],
+	providers: [
+		TokenService, JwtStrategy,
+		RegisterUserUseCase, LoginUserUseCase,
+		AssignRoleUseCase, ListUsersUseCase,
+		CreateDocumentUseCase, UpdateDocumentUseCase, DeleteDocumentUseCase, ListDocsByOwnerUseCase,
+		TriggerIngestionUseCase, UpdateIngestionStatusUseCase, GetIngestionUseCase, ListIngestionsUseCase,
+	],
+	exports: [],
 })
-export class HttpModuleV1 {}
+export class HttpModuleV1 { }
