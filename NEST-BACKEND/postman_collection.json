@@ -1,340 +1,1947 @@
 {
-  "info": {
-    "name": "NestJS v1 APIs",
-    "_postman_id": "generated",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "item": [
-    {
-      "name": "Register",
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "url": {
-          "raw": "{{baseUrl}}/v1/auth/register",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "v1",
-            "auth",
-            "register"
-          ]
-        },
-        "body": {
-          "mode": "raw",
-          "raw": "{\"name\": \"John\", \"email\": \"john@example.com\", \"password\": \"secret123\"}"
-        }
-      }
-    },
-    {
-      "name": "Login",
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "url": {
-          "raw": "{{baseUrl}}/v1/auth/login",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "v1",
-            "auth",
-            "login"
-          ]
-        },
-        "body": {
-          "mode": "raw",
-          "raw": "{\"email\": \"john@example.com\", \"password\": \"secret123\"}"
-        }
-      }
-    },
-    {
-      "name": "List Users (admin)",
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "Bearer {{token}}"
-          }
-        ],
-        "url": {
-          "raw": "{{baseUrl}}/v1/users",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "v1",
-            "users"
-          ]
-        }
-      }
-    },
-    {
-      "name": "Assign Role (admin)",
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          },
-          {
-            "key": "Authorization",
-            "value": "Bearer {{token}}"
-          }
-        ],
-        "url": {
-          "raw": "{{baseUrl}}/v1/users/assign-role",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "v1",
-            "users",
-            "assign-role"
-          ]
-        },
-        "body": {
-          "mode": "raw",
-          "raw": "{\"userId\": \"<id>\", \"role\": \"admin\"}"
-        }
-      }
-    },
-    {
-      "name": "Create Document",
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          },
-          {
-            "key": "Authorization",
-            "value": "Bearer {{token}}"
-          }
-        ],
-        "url": {
-          "raw": "{{baseUrl}}/v1/documents",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "v1",
-            "documents"
-          ]
-        },
-        "body": {
-          "mode": "raw",
-          "raw": "{\"title\": \"Doc A\", \"description\": \"desc\"}"
-        }
-      }
-    },
-    {
-      "name": "My Documents",
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "Bearer {{token}}"
-          }
-        ],
-        "url": {
-          "raw": "{{baseUrl}}/v1/documents",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "v1",
-            "documents"
-          ]
-        }
-      }
-    },
-    {
-      "name": "Update Document",
-      "request": {
-        "method": "PATCH",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          },
-          {
-            "key": "Authorization",
-            "value": "Bearer {{token}}"
-          }
-        ],
-        "url": {
-          "raw": "{{baseUrl}}/v1/documents/:id",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "v1",
-            "documents",
-            ":id"
-          ]
-        },
-        "body": {
-          "mode": "raw",
-          "raw": "{\"title\": \"Updated\"}"
-        }
-      }
-    },
-    {
-      "name": "Delete Document",
-      "request": {
-        "method": "DELETE",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "Bearer {{token}}"
-          }
-        ],
-        "url": {
-          "raw": "{{baseUrl}}/v1/documents/:id",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "v1",
-            "documents",
-            ":id"
-          ]
-        }
-      }
-    },
-    {
-      "name": "Trigger Ingestion",
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          },
-          {
-            "key": "Authorization",
-            "value": "Bearer {{token}}"
-          }
-        ],
-        "url": {
-          "raw": "{{baseUrl}}/v1/ingestion/trigger",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "v1",
-            "ingestion",
-            "trigger"
-          ]
-        },
-        "body": {
-          "mode": "raw",
-          "raw": "{\"documentId\": \"<docId>\"}"
-        }
-      }
-    },
-    {
-      "name": "Get Ingestion",
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "Bearer {{token}}"
-          }
-        ],
-        "url": {
-          "raw": "{{baseUrl}}/v1/ingestion/:id",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "v1",
-            "ingestion",
-            ":id"
-          ]
-        }
-      }
-    },
-    {
-      "name": "List Ingestions (admin)",
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "Bearer {{token}}"
-          }
-        ],
-        "url": {
-          "raw": "{{baseUrl}}/v1/ingestion",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "v1",
-            "ingestion"
-          ]
-        }
-      }
-    },
-    {
-      "name": "Update Ingestion Status (admin)",
-      "request": {
-        "method": "PATCH",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          },
-          {
-            "key": "Authorization",
-            "value": "Bearer {{token}}"
-          }
-        ],
-        "url": {
-          "raw": "{{baseUrl}}/v1/ingestion/:id/status",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "v1",
-            "ingestion",
-            ":id",
-            "status"
-          ]
-        },
-        "body": {
-          "mode": "raw",
-          "raw": "{\"status\": \"running\", \"progress\": 30}"
-        }
-      }
-    }
-  ],
-  "variable": [
-    {
-      "key": "baseUrl",
-      "value": "http://localhost:3000"
-    },
-    {
-      "key": "token",
-      "value": ""
-    }
-  ]
+	"info": {
+		"_postman_id": "c3c81ad4-1f07-44a2-b5ff-431e768c7703",
+		"name": "Nest Backend – Full API",
+		"description": "Auto-generated from your NEST-BACKEND.zip (controllers under src/presentation/http/v1).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43691250"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John\",\n    \"email\": \"harkeshsaini108@gmail.com\",\n    \"password\": \"secret123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"John\",\n    \"email\": \"john@example.com\",\n    \"password\": \"secret123\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/auth/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "105"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"69-sVKxkvExjeCCGjyaLljZJMZM6K4\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Aug 2025 05:07:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"0014b4b5-9e00-42fb-843b-9aca4a17f868\",\n    \"name\": \"John\",\n    \"email\": \"john@example.com\",\n    \"roles\": [\n        \"viewer\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"harkeshsaini108@gmail.com\",\n    \"password\": \"secret123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"john@example.com\",\n    \"password\": \"secret123\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/auth/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "230"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e6-iCGm5V7ESgAAqOIWt8VbKWeFEjc\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Aug 2025 05:08:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMDE0YjRiNS05ZTAwLTQyZmItODQzYi05YWNhNGExN2Y4NjgiLCJyb2xlcyI6WyJhZG1pbiJdLCJpYXQiOjE3NTQ5NzUzMjcsImV4cCI6MTc1NzU2NzMyN30.A-yGdtehCyh9_Sb0agQejl_swv3H4I4gxWe5qyBSFd4\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/auth/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users (admin)",
+			"item": [
+				{
+					"name": "List Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/v1/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/users",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "221"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"dd-Lb8FXhs77YdlT2R1aq66Yl37s/8\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Aug 2025 05:09:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"0014b4b5-9e00-42fb-843b-9aca4a17f868\",\n        \"name\": \"John\",\n        \"email\": \"john@example.com\",\n        \"roles\": [\n            \"admin\"\n        ]\n    },\n    {\n        \"id\": \"3337aaa0-8490-4483-8c07-165325872646\",\n        \"name\": \"John\",\n        \"email\": \"harkeshsaini108@gmail.com\",\n        \"roles\": [\n            \"viewer\"\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Assign Role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": \"3337aaa0-8490-4483-8c07-165325872646\",\n  \"role\": \"editor\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/users/assign-role",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								"assign-role"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Assign Role",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"userId\": \"3337aaa0-8490-4483-8c07-165325872646\",\n  \"role\": \"editor\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/users/assign-role",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										"assign-role"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "73"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"49-R/N9Uql4of52d30oZ89aSJOEQXs\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Aug 2025 05:13:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"3337aaa0-8490-4483-8c07-165325872646\",\n    \"roles\": [\n        \"viewer\",\n        \"editor\"\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Documents",
+			"item": [
+				{
+					"name": "My Documents",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/v1/documents",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"documents"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "My Documents",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/documents",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"documents"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "389"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"185-x5g5whPodS5fVleb4y4DIX4xWgo\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Aug 2025 05:29:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"9151fbb3-ea8d-4f9c-9b08-b300415b0f0f\",\n        \"ownerId\": \"3337aaa0-8490-4483-8c07-165325872646\",\n        \"title\": \"My File Title\",\n        \"description\": \"Optional description\",\n        \"url\": null,\n        \"createdAt\": \"2025-08-12T05:14:27.760Z\",\n        \"updatedAt\": \"2025-08-12T05:14:27.760Z\",\n        \"storagePath\": \"uploads\\\\f70854eb-7b49-44c6-b31e-a995ea144ba4.zip\",\n        \"originalName\": \"NEST-BACKEND.zip\",\n        \"mimeType\": \"application/zip\",\n        \"size\": 135246\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Upload + (optional) Ingest",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/user/Downloads/mariox-assignment/NEST-BACKEND.zip"
+								},
+								{
+									"key": "title",
+									"value": "My File Title",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Optional description",
+									"type": "text"
+								},
+								{
+									"key": "ingestNow",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "paused",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "metadata",
+									"value": "{\"source\": \"postman\", \"tags\": [\"demo\"]}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/documents/upload",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"documents",
+								"upload"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Upload + (optional) Ingest",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/user/Downloads/mariox-assignment/NEST-BACKEND.zip"
+										},
+										{
+											"key": "title",
+											"value": "My File Title",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Optional description",
+											"type": "text"
+										},
+										{
+											"key": "ingestNow",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "paused",
+											"value": "false",
+											"type": "text"
+										},
+										{
+											"key": "metadata",
+											"value": "{\"source\": \"postman\", \"tags\": [\"demo\"]}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/documents/upload",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"documents",
+										"upload"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "590"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24e-6MQczAnxkjO3sLIXOWcTIcoRFfE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Aug 2025 05:14:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"document\": {\n        \"id\": \"9151fbb3-ea8d-4f9c-9b08-b300415b0f0f\",\n        \"ownerId\": \"3337aaa0-8490-4483-8c07-165325872646\",\n        \"title\": \"My File Title\",\n        \"description\": \"Optional description\",\n        \"url\": null,\n        \"createdAt\": \"2025-08-12T05:14:27.760Z\",\n        \"updatedAt\": \"2025-08-12T05:14:27.760Z\",\n        \"storagePath\": \"uploads\\\\f70854eb-7b49-44c6-b31e-a995ea144ba4.zip\",\n        \"originalName\": \"NEST-BACKEND.zip\",\n        \"mimeType\": \"application/zip\",\n        \"size\": 135246\n    },\n    \"ingestionJob\": {\n        \"id\": \"ea9d6d39-fd83-4718-8075-b9ef5f3d8617\",\n        \"documentId\": \"9151fbb3-ea8d-4f9c-9b08-b300415b0f0f\",\n        \"status\": \"queued\",\n        \"progress\": 0,\n        \"paused\": {\n            \"tags\": [\n                \"demo\"\n            ],\n            \"source\": \"postman\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create (metadata only)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Doc without file\",\n    \"description\": \"Optional\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/documents",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"documents"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create (metadata only)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Doc without file\",\n    \"description\": \"Optional\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/documents",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"documents"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "302"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12e-kozIQnc1upqhU6ceVxwetRsj6wQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Aug 2025 05:03:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"165d6d50-0138-4b84-9ea4-b192ce6fce01\",\n    \"ownerId\": \"5c4c6a05-2c1c-49c7-b3f9-ca6daa60fa2d\",\n    \"title\": \"Doc without file\",\n    \"description\": \"Optional\",\n    \"url\": null,\n    \"createdAt\": \"2025-08-12T05:03:54.094Z\",\n    \"updatedAt\": \"2025-08-12T05:03:54.094Z\",\n    \"storagePath\": null,\n    \"originalName\": null,\n    \"mimeType\": null,\n    \"size\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Updated title\",\n    \"description\": \"Updated desc\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/documents/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"documents",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "9151fbb3-ea8d-4f9c-9b08-b300415b0f0f"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Updated title\",\n    \"description\": \"Updated desc\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/documents/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"documents",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "9151fbb3-ea8d-4f9c-9b08-b300415b0f0f"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "379"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"17b-V/zwzTTQKRbz1ZEwnAeY1F/wOJE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Aug 2025 05:35:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"9151fbb3-ea8d-4f9c-9b08-b300415b0f0f\",\n    \"ownerId\": \"3337aaa0-8490-4483-8c07-165325872646\",\n    \"title\": \"Updated title\",\n    \"description\": \"Updated desc\",\n    \"url\": null,\n    \"createdAt\": \"2025-08-12T05:14:27.760Z\",\n    \"updatedAt\": \"2025-08-12T05:35:34.875Z\",\n    \"storagePath\": \"uploads\\\\f70854eb-7b49-44c6-b31e-a995ea144ba4.zip\",\n    \"originalName\": \"NEST-BACKEND.zip\",\n    \"mimeType\": \"application/zip\",\n    \"size\": 135246\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/v1/documents/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"documents",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ingestion",
+			"item": [
+				{
+					"name": "Trigger Ingestion (editor/admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"documentId\": \"9151fbb3-ea8d-4f9c-9b08-b300415b0f0f\",\n  \"metadata\": {\n    \"note\": \"start now\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/ingestion/trigger",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"ingestion",
+								"trigger"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Trigger Ingestion (editor/admin)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"documentId\": \"9151fbb3-ea8d-4f9c-9b08-b300415b0f0f\",\n  \"metadata\": {\n    \"note\": \"start now\"\n  }\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/ingestion/trigger",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"ingestion",
+										"trigger"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "158"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9e-88E3XY4aUItvTSepKT6gTz1iH1I\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Aug 2025 05:18:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"a61ff6d7-1338-462f-a15c-69a0e05c4ce9\",\n    \"documentId\": \"9151fbb3-ea8d-4f9c-9b08-b300415b0f0f\",\n    \"status\": \"queued\",\n    \"progress\": 0,\n    \"paused\": {\n        \"note\": \"start now\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Status (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"completed\",\n  \"progress\": 45,\n  \"metadata\": {\n    \"stage\": \"chunking\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/ingestion/:id/status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"ingestion",
+								":id",
+								"status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "ea9d6d39-fd83-4718-8075-b9ef5f3d8617"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Status (admin)",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"status\": \"completed\",\n  \"progress\": 45,\n  \"metadata\": {\n    \"stage\": \"chunking\"\n  }\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/ingestion/:id/status",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"ingestion",
+										":id",
+										"status"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "ea9d6d39-fd83-4718-8075-b9ef5f3d8617"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "162"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a2-y9RYbGQmyNxQbGmUDKdzShj/r7I\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Aug 2025 05:26:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"ea9d6d39-fd83-4718-8075-b9ef5f3d8617\",\n    \"documentId\": \"9151fbb3-ea8d-4f9c-9b08-b300415b0f0f\",\n    \"status\": \"completed\",\n    \"progress\": 45,\n    \"paused\": {\n        \"stage\": \"chunking\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get One",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/v1/ingestion/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"ingestion",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "ea9d6d39-fd83-4718-8075-b9ef5f3d8617"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get One",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/ingestion/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"ingestion",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "ea9d6d39-fd83-4718-8075-b9ef5f3d8617"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "162"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a2-y9RYbGQmyNxQbGmUDKdzShj/r7I\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Aug 2025 05:26:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"ea9d6d39-fd83-4718-8075-b9ef5f3d8617\",\n    \"documentId\": \"9151fbb3-ea8d-4f9c-9b08-b300415b0f0f\",\n    \"status\": \"completed\",\n    \"progress\": 45,\n    \"paused\": {\n        \"stage\": \"chunking\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "List All (admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/v1/ingestion",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"ingestion"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List All (admin)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/v1/ingestion",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"ingestion"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "323"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"143-YqkkMY/3xvLu4Z4eyMxVWh6npNY\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Aug 2025 05:27:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"a61ff6d7-1338-462f-a15c-69a0e05c4ce9\",\n        \"documentId\": \"9151fbb3-ea8d-4f9c-9b08-b300415b0f0f\",\n        \"status\": \"queued\",\n        \"progress\": 0,\n        \"paused\": {\n            \"note\": \"start now\"\n        }\n    },\n    {\n        \"id\": \"ea9d6d39-fd83-4718-8075-b9ef5f3d8617\",\n        \"documentId\": \"9151fbb3-ea8d-4f9c-9b08-b300415b0f0f\",\n        \"status\": \"completed\",\n        \"progress\": 45,\n        \"paused\": {\n            \"stage\": \"chunking\"\n        }\n    }\n]"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000"
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
 }

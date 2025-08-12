@@ -24,7 +24,7 @@ export class IngestionController {
 	async triggerIngestion(@Body() dto: TriggerIngestionDto) { return this.trigger.execute(dto); }
 
 	@Patch(':id/status')
-	@Roles('admin')
+	@Roles('admin','editor')
 	async setStatus(@Param('id') id: string, @Body() dto: UpdateIngestionStatusDto) { return this.updateStatus.execute(id, dto); }
 
 	@Get(':id')
